@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Amplify Todos</h2>
+      <h2>Amplify Todos Update</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
         style={styles.input}
