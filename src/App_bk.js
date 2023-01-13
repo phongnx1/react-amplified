@@ -44,7 +44,6 @@ const App = () => {
     <div style={styles.container}>
       <h2>Amplify Todos Update</h2>
       <input
-        class="task-name"
         onChange={event => setInput('name', event.target.value)}
         style={styles.input}
         value={formState.name}
@@ -55,9 +54,8 @@ const App = () => {
         style={styles.input}
         value={formState.description}
         placeholder="Description"
-        class="task-description"
       />
-      <button style={styles.button} onClick={addTodo} class="summit-btn">Create Todo</button>
+      <button style={styles.button} onClick={addTodo}>Create Todo</button>
       {
         todos.map((todo, index) => (
           <div key={todo.id ? todo.id : index} style={styles.todo}>
@@ -79,4 +77,4 @@ const styles = {
   button: { backgroundColor: 'black', color: 'white', outline: 'none', fontSize: 18, padding: '12px 0px' }
 }
 
-export default App
+export default App_bk
