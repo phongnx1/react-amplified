@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Amplify Todos Update</h2>
+      <h2>Amplify Todos Update 2</h2>
       <input
         class="task-name"
         onChange={event => setInput('name', event.target.value)}
