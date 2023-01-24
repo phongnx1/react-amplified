@@ -43,7 +43,7 @@ const App = () => {
   }
 
   return (
-    <Authenticator hideSignUp={false} >
+    <Authenticator hideSignUp={true} >
       {({ signOut, user }) => (
         <main>
           <h1>Hello: {user.username}</h1>
