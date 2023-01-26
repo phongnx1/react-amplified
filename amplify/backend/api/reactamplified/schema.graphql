@@ -7,3 +7,46 @@ type Todo @model {
   name: String!
   description: String
 }
+
+# members	 - メンバーマスタ
+type WorkslogMembers @model {
+    member_id: String! @primaryKey     #【PARTITION KEY】社員番号
+    name: String!                      # 氏名
+    team_name: String!                 # 所属 例.GDSC
+    start_date: String                 # 適用開始日付(YYYY-MM-DD)
+    end_date: String                   # 適用終了日付(YYYY-MM-DD)
+}
+
+# spaces  	- 場所マスタ
+type WorkslogSpaces @model {
+    space_id: String!	@primaryKey(sortKeyFields: ["sort_no"]) # 【PARTITION KEY】スペースID
+    sort_no: Int!		                   # 【SORT KEY】ソート番号
+    space_name: String!	               # 場所(11:五反田, 12:戸越, 13:銀座, 80:休暇, 90:外出)
+    start_date: String                 # 適用開始日付(YYYY-MM-DD)
+    end_date: String 	                 # 適用終了日付(YYYY-MM-DD)
+}
+
+# works   	- 出社情報
+type WorkslogWorks @model {
+    work_id: String! @primaryKey      # 【PARTITION KEY】日付(YYYYMMDD) + : + 社員番号 例. 20230116:880472
+    date: String! 		                 # 日付(YYYY-MM-DD)
+    member_id: String! 	               # 社員番号
+    space_id_am: Int!                  # 午前のスペースID
+    space_id_pm: Int!                  # 午後のスペースID
+    flex_am: Boolean!	# 午前のフレックス(true:有, false:無)
+    flex_pm: Boolean!	# 午後のフレックス(true:有, false:無)
+    memo: String 		                   # 備考
+}
+
+# holidays	 - 休日情報(祝日、会社指定休日)
+type WorkslogHolidays @model {
+    holiday_id: String! @primaryKey     # 【PARTITION KEY】日付(YYYYMMDD)
+    name: String! 			                # 休日名
+}
+
+
+type Test @model {
+  id: ID!
+  name: String!
+  description: String
+}
